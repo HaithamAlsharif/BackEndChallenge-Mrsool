@@ -4,11 +4,18 @@
     Name: <%= f.text_field :name %> <br />
     Email: <%= f.text_field :email %> <br />
     Phone Number: <%= f.text_field :phoneNumber %> <br />
-    <%= f.submit %>
+    <%= f.submit 'commit', :onclick => '' %>
 <% end %>
 
 <script>
-$('#myForm').on('submit', function () {
-   alert("you submitted");
+$('#myForm').on('submit', function (event, force) {
+    if (!force) {
+        var $this = $(this);
+        event.preventDefault();
+        setTimeout(function () {
+            $this.trigger('submit', true);
+            setTimeout(function() { alert('Your request has been processed successfully !'); }, 1);
+        }, 3000);
+    }
 });
 </script>
