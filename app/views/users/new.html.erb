@@ -1,7 +1,14 @@
 <h1>Enter your information</h1>
-<%= form_for @user do |f| %>
+
+<%= form_for @user , :html => { :id => "myForm" } do |f| %>
     Name: <%= f.text_field :name %> <br />
     Email: <%= f.text_field :email %> <br />
     Phone Number: <%= f.text_field :phoneNumber %> <br />
     <%= f.submit %>
 <% end %>
+
+<script>
+$('#myForm').on('submit', function () {
+   alert("you submitted");
+});
+</script>
